@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ClientModule" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Poker_Online" TARGET_NAME="ClientModule" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Poker_Online" RUN_TARGET_NAME="ClientModule">
+    <method v="2">
+      <option name="CMake.Explicit.Target" explicitTargetName="clean" />
+      <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Client_run_tests" run_configuration_type="CMakeGoogleTestRunConfigurationType" />
+    </method>
+  </configuration>
+</component>

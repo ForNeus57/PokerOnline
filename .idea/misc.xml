@@ -8,5 +8,11 @@
       <file path="$PROJECT_DIR$/Model/lib/internal" />
       <file path="$PROJECT_DIR$/Server/lib/internal" />
     </sourceRoots>
+    <libraryRoots>
+      <file path="$PROJECT_DIR$/Client/lib" />
+      <file path="$PROJECT_DIR$/Common/lib" />
+      <file path="$PROJECT_DIR$/Model/lib" />
+      <file path="$PROJECT_DIR$/Server/lib" />
+    </libraryRoots>
   </component>
 </project>

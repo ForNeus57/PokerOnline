@@ -1,2 +1,2 @@
-add_subdirectory(external/libpqxx/ build-pqxx)
+#add_subdirectory(external/)
 add_subdirectory(internal/)

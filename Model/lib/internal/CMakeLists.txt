@@ -1,6 +1,6 @@
 set(LIBRARY_SOURCE
-		src/database_manager.cpp
-		src/server.cpp)
+		src/card.cpp
+		)
 
 include_directories(include)
 
@@ -8,7 +8,6 @@ add_library(${LIBRARY_NAME} STATIC ${LIBRARY_SOURCE})
 
 target_include_directories(${LIBRARY_NAME} PUBLIC include)
 
-#find_package(libpqxx REQUIRED)
-target_link_libraries(${LIBRARY_NAME} PRIVATE Common_lib Model_lib)
+target_link_libraries(${LIBRARY_NAME} PRIVATE Common_lib)
 
 target_compile_options(${LIBRARY_NAME} PRIVATE ${COMPILE_OPTIONS})
