@@ -1,0 +1,186 @@
+@startuml
+scale 2000 width
+namespace std <<Frame>> {
+	exception exception {
+		{field} ...
+        {method} ...
+	}
+	exception invalid_argument {
+		{field} ...
+		{method} ...
+	}
+
+	'=============================================================
+
+	invalid_argument --|> exception
+}
+
+namespace Poker <<Frame>> {
+	namespace Common <<Frame>> {
+		class IterativeEnum<typename T, typename ForwardOperation> {
+	        +T value
+	    }
+	}
+	namespace Model <<Frame>> {
+		enum Suit::Value {
+			Heart
+			Diamond
+			Club
+			Pike
+		}
+		class Suit::Iterator {
+			std::underling_type<Suit::Value> value
+		}
+		class Suit {
+			-IterativeEnum<Suit::Value, BitShiftOperation> value
+			+Suit(std::underling_type<Suit::Value>)
+			+Suit::Value getValue()
+			+Suit::Iterator begin()
+			+Suit::Iterator end()
+			+ {static} isValid(std::underling_type<Suit::Value>)
+		}
+		enum Rank::Value {
+            Ace
+            Two
+            Three
+            Four
+            Five
+            Six
+            Seven
+            Eight
+            Nine
+            Ten
+            jack
+            queen
+            king
+        }
+		class Rank::Iterator {
+			std::underling_type<Rank::Value> value
+		}
+		class Rank {
+			-IterativeEnum<Rank::Value, BitShiftOperation> value
+			+Rank(std::underling_type<Rank::Value>)
+			+Rank::Value getValue()
+			+Rank::Iterator begin()
+			+Rank::Iterator end()
+			+ {static} isValid(std::underling_type<Rank::Value>)
+		}
+
+		class Card {
+			-Rank card_rank
+			-Suit card_suit
+			-size_t number
+			+Rank getRank()
+			+Suit getSuit()
+			+size_t getNumber()
+		}
+
+		class Deck {
+			-array<Card> card_table
+			-queue<Card> card_order
+			+Shuffle()
+			+getNextCard()
+		}
+
+		class Hand {
+			-array<Card> cards
+			+getCard(int)
+			+giveCard(Card)
+			+ {static} compareHands(Hand, Hand)
+		}
+
+		note left of Hand
+			All the card are automatically sorted as the get initialized
+	    end note
+		abstract class Player {
+			#Hand player_hand
+			#size_t money
+			#*Logger event_logger
+			void bet(size_t)
+			void receiveMoney(size_t)
+			size_t getMoney()
+		}
+
+		class HumanPlayer {
+		}
+
+		class AI {
+
+		}
+		abstract class MoneyManager {
+			#size_t money
+            {abstract} +size_t getMoney()
+            {abstract} +void receiveMoney(size_t)
+		}
+		class Pot {
+		}
+
+		class GameState {
+		}
+		class GameState::Iterator {
+		}
+
+		class Game {
+			-Deck table_deck
+			-array<Player> players
+			-array<GameState> state
+			-Pot gamePot
+			-Logger event_logger
+			-size_t state_number
+			size_t advance()
+		}
+		class GameConstructor <<Factory>> {
+			+Game createBlackJack()
+			+Game createPoker()
+		}
+		class Information {
+			-string value
+			+getValue()
+		}
+		class Logger {
+			-queue<Information>
+			+addInformation()
+			+getDump()
+		}
+		note right of Logger
+            Logs what happens in a game (Every event).
+        end note
+
+		'=============================================================
+
+		Suit "1" .u.|> "1" IterativeEnum : <<bind>> <T ->Suit::Value>
+		Rank "1" .u.|> "1" IterativeEnum : <<bind>> <T ->Rank::Value>
+		Suit *-- Suit::Value : contains >
+		Rank *-- Rank::Value : contains >
+		Suit o-- Suit::Iterator
+		Rank o-- Rank::Iterator
+		Suit <.. invalid_argument : <<throws>>
+		Rank <.. invalid_argument : <<throws>>
+
+		Card "1" *-- "1" Suit
+		Card "1" *-- "1" Rank
+
+		Deck::array "1" o-l- "0...52" Card : represents <
+		Hand "1" o-r- "0...5" Card
+
+		Player -r-|> MoneyManager
+		Pot -d-|> MoneyManager
+
+		Player "1" *-- "1" Hand
+		HumanPlayer -r-|> Player
+		AI -l-|> Player
+
+		GameState::Iterator *-r- GameState
+		Logger o-l- Information
+
+		Game "1" *-l- "1...*" GameState : iterates >
+		Game *-- Pot
+		Game *-- Deck : contains >
+		Game "1" *-- "2...10" Player
+		Game *-u- Logger : keeps information <
+
+		GameConstructor o-- Game : constructs >
+	}
+}
+
+@enduml

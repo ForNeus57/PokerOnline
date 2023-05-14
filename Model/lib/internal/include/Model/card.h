@@ -6,15 +6,17 @@
 #define POKER_ONLINE_CARD_H
 
 #include "Model/card.h"
-namespace model {
-	/**
-	 * @brief
-	 */
+namespace poker::model {
+		/**
+		 * @brief
+		 */
 		class Card {
+			public:
 			public:
 				Card();
 		};
-}
+	}
+
 
 
 #endif    //	POKER_ONLINE_CARD_H

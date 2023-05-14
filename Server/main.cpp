@@ -5,6 +5,7 @@
 #include <Common/automata.h>
 #include <Model/card.h>
 //#include <pqxx/pqxx>
+#include <boost/thread.hpp>
 
 int main() {
 	return 0;

@@ -1,0 +1,1 @@
+1.  Zmień te nazwy aby były konceptualne na diagramach, a nie nazwane implementacyjnie

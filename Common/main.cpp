@@ -3,6 +3,7 @@
 //
 //
 #include <Common/automata.h>
+#include <boost/thread.hpp>
 
 int main() {
 	test();

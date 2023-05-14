@@ -1,0 +1,1 @@
+1.  Change all the library names to be 100% lowercase
