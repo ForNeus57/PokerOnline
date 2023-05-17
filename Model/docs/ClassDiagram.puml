@@ -22,48 +22,52 @@ namespace Poker <<Frame>> {
 	    }
 	}
 	namespace Model <<Frame>> {
-		enum Suit::Value {
-			Heart
-			Diamond
-			Club
-			Pike
+		together {
+			enum Suit::Value {
+				Heart
+				Diamond
+				Club
+				Pike
+			}
+			class Suit::Iterator {
+				std::underling_type<Suit::Value> value
+			}
+			class Suit {
+				-IterativeEnum<Suit::Value, BitShiftOperation> value
+				+Suit(std::underling_type<Suit::Value>)
+				+Suit::Value getValue()
+				+Suit::Iterator begin()
+				+Suit::Iterator end()
+				+ {static} isValid(std::underling_type<Suit::Value>)
+			}
 		}
-		class Suit::Iterator {
-			std::underling_type<Suit::Value> value
-		}
-		class Suit {
-			-IterativeEnum<Suit::Value, BitShiftOperation> value
-			+Suit(std::underling_type<Suit::Value>)
-			+Suit::Value getValue()
-			+Suit::Iterator begin()
-			+Suit::Iterator end()
-			+ {static} isValid(std::underling_type<Suit::Value>)
-		}
-		enum Rank::Value {
-            Ace
-            Two
-            Three
-            Four
-            Five
-            Six
-            Seven
-            Eight
-            Nine
-            Ten
-            jack
-            queen
-            king
-        }
-		class Rank::Iterator {
-			std::underling_type<Rank::Value> value
-		}
-		class Rank {
-			-IterativeEnum<Rank::Value, BitShiftOperation> value
-			+Rank(std::underling_type<Rank::Value>)
-			+Rank::Value getValue()
-			+Rank::Iterator begin()
-			+Rank::Iterator end()
-			+ {static} isValid(std::underling_type<Rank::Value>)
+		together {
+			enum Rank::Value {
+	            Ace
+	            Two
+	            Three
+	            Four
+	            Five
+	            Six
+	            Seven
+	            Eight
+	            Nine
+	            Ten
+	            jack
+	            queen
+	            king
+	        }
+			class Rank::Iterator {
+				std::underling_type<Rank::Value> value
+			}
+			class Rank {
+				-IterativeEnum<Rank::Value, BitShiftOperation> value
+				+Rank(std::underling_type<Rank::Value>)
+				+Rank::Value getValue()
+				+Rank::Iterator begin()
+				+Rank::Iterator end()
+				+ {static} isValid(std::underling_type<Rank::Value>)
+			}
 		}
 
 		class Card {
@@ -75,76 +79,87 @@ namespace Poker <<Frame>> {
 			+size_t getNumber()
 		}
 
-		class Deck {
-			-array<Card> card_table
-			-queue<Card> card_order
-			+Shuffle()
-			+getNextCard()
+		together {
+			class Deck {
+                -array<Card> card_table
+                -queue<Card> card_order
+                +Shuffle()
+                +getNextCard()
+            }
+
+            class Hand {
+                -array<Card> cards
+                +getCard(int)
+                +giveCard(Card)
+                + {static} compareHands(Hand, Hand)
+            }
+            note left of Hand
+                All the card are automatically sorted
+            end note
 		}
 
-		class Hand {
-			-array<Card> cards
-			+getCard(int)
-			+giveCard(Card)
-			+ {static} compareHands(Hand, Hand)
+
+		together {
+			abstract class Player {
+                #Hand player_hand
+                #size_t money
+                #*Logger event_logger
+                void bet(size_t)
+                void receiveMoney(size_t)
+                size_t giveMoney()
+            }
+
+            class HumanPlayer {
+            }
+
+            class AI {
+
+            }
 		}
 
-		note left of Hand
-			All the card are automatically sorted as the get initialized
-	    end note
-		abstract class Player {
-			#Hand player_hand
-			#size_t money
-			#*Logger event_logger
-			void bet(size_t)
-			void receiveMoney(size_t)
-			size_t getMoney()
-		}
-
-		class HumanPlayer {
-		}
-
-		class AI {
-
-		}
 		abstract class MoneyManager {
 			#size_t money
-            {abstract} +size_t getMoney()
+            {abstract} +size_t giveMoney()
             {abstract} +void receiveMoney(size_t)
+            {abstract} +size_t checkBalance()
 		}
 		class Pot {
 		}
 
-		class GameState {
-		}
-		class GameState::Iterator {
-		}
+		together {
+			class GameState {
+			}
+			class GameState::Iterator {
+			}
 
-		class Game {
-			-Deck table_deck
-			-array<Player> players
-			-array<GameState> state
-			-Pot gamePot
-			-Logger event_logger
-			-size_t state_number
-			size_t advance()
+			class Game {
+				-Deck table_deck
+				-array<Player> players
+				-array<GameState> state
+				-Pot gamePot
+				-Logger event_logger
+				-size_t state_number
+				size_t advance()
+			}
+			class GameConstructor <<Factory>> {
+				+Game createBlackJack()
+				+Game createPoker()
+			}
 		}
-		class GameConstructor <<Factory>> {
-			+Game createBlackJack()
-			+Game createPoker()
-		}
-		class Information {
-			-string value
-			+getValue()
-		}
-		class Logger {
-			-queue<Information>
-			+addInformation()
-			+getDump()
-		}
-		note right of Logger
-            Logs what happens in a game (Every event).
-        end note
+		together {
+			class Information {
+				-string value
+				+getValue()
+			}
+			class Logger {
+				-queue<Information>
+				+addInformation()
+				+getDump()
+			}
+			note right of Logger
+	            Logs what happens in a game (Every event).
+	        end note
+        }
 
 		'=============================================================
 
@@ -152,10 +167,10 @@ namespace Poker <<Frame>> {
 		Rank "1" .u.|> "1" IterativeEnum : <<bind>> <T ->Rank::Value>
 		Suit *-- Suit::Value : contains >
 		Rank *-- Rank::Value : contains >
-		Suit o-- Suit::Iterator
-		Rank o-- Rank::Iterator
-		Suit <.. invalid_argument : <<throws>>
-		Rank <.. invalid_argument : <<throws>>
+		Suit <.. Suit::Iterator :  < <<Iterator>>
+		Rank <.. Rank::Iterator : < <<Iterator>>
+		Suit ..> invalid_argument : <<throws>>
+		Rank ..> invalid_argument : <<throws>>
 
 		Card "1" *-- "1" Suit
 		Card "1" *-- "1" Rank
@@ -170,14 +185,14 @@ namespace Poker <<Frame>> {
 		HumanPlayer -r-|> Player
 		AI -l-|> Player
 
-		GameState::Iterator *-r- GameState
+		GameState::Iterator .r.> GameState : <<Iterator>>
 		Logger o-l- Information
 
 		Game "1" *-l- "1...*" GameState : iterates >
 		Game *-- Pot
 		Game *-- Deck : contains >
 		Game "1" *-- "2...10" Player
-		Game *-u- Logger : keeps information <
+		Game *-- Logger : keeps information <
 
 		GameConstructor o-- Game : constructs >
 	}

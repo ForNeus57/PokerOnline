@@ -1,0 +1,149 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+scale 5000 width
+	namespace SWPPGRPG {
+		namespace InteractionModule {
+			class Password {
+				-String md5_value
+				+bool isEqual(String)
+				+ {Static} String Encrypt(String)
+			}
+
+			class Premium {
+				+Date start_date
+				+Date expiration_date
+				+bool active
+				+void buy(Date length)
+			}
+
+			class User {
+				Premium premium_status
+				#String login
+				#Password pass
+			}
+			class DM {
+				-List<Game> hosted_games
+				-List<Map> created_maps
+				-List<Song> uploaded_tracks
+				+void addGame(Game)
+				+void addMap(Map)
+				+void addSong(Song)
+			}
+			class Gracz {
+				-List<Game> game_history
+				-List<Character> player_characters
+				+void addCharacter(Character)
+				+void addGame(Game)
+				+ void trade(Gracz, Item)
+			}
+
+			class Game {
+				+DM main
+				+array<Gracz> tablica_graczy
+				+Song current_song
+				+void Start()
+				+void Stop()
+			}
+
+			class Character {
+				+Image background_image
+				+Image character_picture
+				+String name
+				+Int level
+				+Int hp
+				+List<Item> eq
+				+Skill skills
+				+void ImportToJSON(File)
+				+File ExportFromJSON(String)
+			}
+
+			class Skill {
+				+Int Charisma
+				+Int Constitution
+				+Int Intelligence
+				+Int Strength
+				+Int Dexterity
+				+Int Wisdom
+			}
+
+			class Item {
+				+String name
+				+String description
+				+ItemRarity rarity
+			}
+
+			enum ItemRarity {
+				Common
+				Rare
+				Epic
+				Legendary
+			}
+
+			class Song {
+				-String url
+				-String name
+				-String author
+				-File file
+				+void Play()
+				+void Pause()
+				+void Loop()
+			}
+
+			class Map {
+				-Int x1_bound
+				-Int x2_bound
+				-Int y1_bound
+				-Int y2_bound
+				-List<MapObject>
+				-Image background
+			}
+
+			class MapObject {
+				-int x
+				-int y
+				-Image texture
+				-String name
+				+void Render()
+			}
+
+			class EndUser {
+				+DM dm_mode
+				+Gracz gracz_mode
+				+void switchToDM()
+				+void switchToGracz()
+			}
+
+		}
+
+		'==========================================================
+
+		User "1" *-- "1" Password
+        User <|-- EndUser
+
+        EndUser *-r- DM
+        EndUser *-l- Gracz
+
+        DM o--* Game
+        DM o-- Map
+        DM o-- Song
+
+        Gracz o-l- Character
+        Gracz o--* Game
+
+        Map o-r- MapObject
+
+        Character o-- Item
+        Character *-- Skill
+
+        Item *-r- ItemRarity
+
+        Song -l-* Game
+
+        Premium --* User
+
+        '==========================================================
+
+	}
+
+@enduml

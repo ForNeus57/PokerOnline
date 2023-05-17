@@ -3,8 +3,9 @@
 //
 #include "Model/card.h"
 
-namespace model {
-	Card::Card() {
-	
+namespace poker::model {
+		Card::Card() {
+		
+		}
 	}
-}
+

@@ -30,8 +30,3 @@ add_subdirectory(${PROJECT_SOURCE_DIR}/Client)
 add_subdirectory(${PROJECT_SOURCE_DIR}/Common)
 add_subdirectory(${PROJECT_SOURCE_DIR}/Model)
 add_subdirectory(${PROJECT_SOURCE_DIR}/Server)
-
-set(Boost_INCLUDE_DIR "C:/Program Files/SDK/MinGW_Boost/include")
-set(Boost_LIBRARY_DIR "C:/Program Files/SDK/MinGW_Boost/lib")
-find_package(Boost 1.77.0 COMPONENTS system filesystem REQUIRED)
-include_directories(${Boost_INCLUDE_DIRS})
