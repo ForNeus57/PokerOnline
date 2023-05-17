@@ -1,0 +1,17 @@
+@startuml
+
+	actor User
+	actor Moderator
+
+	rectangle PokerOnline {
+		usecase Registration
+	}
+
+	'===============================================
+
+	User -- PokerOnline
+	Moderator -- PokerOnline
+
+
+
+@enduml
