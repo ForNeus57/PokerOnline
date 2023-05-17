@@ -1,0 +1,59 @@
+@startuml
+	scale 5000 width
+	namespace SWPPGRPG {
+		namespace NetworkModule {
+
+			class Sender {
+				+void send(String)
+			}
+
+			class Receiver {
+				+String receive()
+			}
+
+
+		    abstract class NetworkManager {
+		        #String IP
+		        #Int Port
+				#Sender network_sender
+				#Reciver network_receiver
+
+				+void {abstract} Connect()
+				+void {abstract} Disconnect()
+		    }
+
+		    class Database <<Singleton>> {
+		        +void makeQuery(String)
+		    }
+			class Server <<Singleton>> {
+				-SpotifyInterface spotify
+				-Database db
+				+void AcceptRequest()
+			}
+
+			class SpotifyInterface {
+
+			}
+
+			class Client {
+				+void connect()
+			}
+
+			'==========================================================
+
+            NetworkManager *-- Sender
+            NetworkManager *-- Receiver
+
+            NetworkManager <|-- Server
+            NetworkManager <|-- Client
+
+            Server *-- Database
+
+            SpotifyInterface -u-* Server
+
+            '==========================================================
+
+		}
+	}
+
+@enduml
