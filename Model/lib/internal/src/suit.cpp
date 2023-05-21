@@ -1,51 +1,55 @@
-//
-// Created by Dominik on 12.05.2023.
-//
+/**
+ * @file 	suit.cpp
+ * @author 	Dominik Breksa
+ * @date 	12.05.2023
+ * @brief	Source file relating to Suit class.
+ * @see		suit.h file.
+ * @version 0.7.1
+**/
+
 #include "Model/suit.h"
 
 namespace poker {
 	inline namespace model {
-		//	Iterator definitions
-		
 		//	Static variables of the class
 		
 		//	Method definitions
-		Suit::Suit() : _val(Value::FIRST) {}
+		Suit::Suit() : _val(Value::Heart) {}
 		
-		Suit::Suit(Suit::ValueType value) {
+		Suit::Suit(Value value) : _val(value) {}
+		
+		Suit::Suit(Suit::ValueUnderlingType value) {
 			if(Suit::isValid(value))
 				this->_val = static_cast<Value>(value);
 			else
 				throw std::invalid_argument("Unknown or wrong suit value provided!");
 		}
 		
-		Suit::Suit(Value value) : _val(value) {}
-		
-		inline bool Suit::operator==(const Suit& other) const {
-			return (static_cast<Suit::ValueType>(this->_val) & static_cast<Suit::ValueType>(other._val)) > 0;
+		bool Suit::operator==(const Suit& other) const {
+			return (static_cast<Suit::ValueUnderlingType>(this->_val) & static_cast<Suit::ValueUnderlingType>(other._val)) > 0;
 		}
 		
-		inline bool Suit::operator!=(const Suit& other) const {
+		bool Suit::operator!=(const Suit& other) const {
 			return !(*this == other);
 		}
 		
-		inline bool Suit::operator<(const Suit& other) const {
+		bool Suit::operator<(const Suit& other) const {
 			return this->_val < other._val;
 		}
 		
-		inline bool Suit::operator>(const Suit& other) const {
+		bool Suit::operator>(const Suit& other) const {
 			return other._val < this->_val;
 		}
 		
-		inline bool Suit::operator<=(const Suit& other) const {
+		bool Suit::operator<=(const Suit& other) const {
 			return !(this->_val > other._val);
 		}
 		
-		inline bool Suit::operator>=(const Suit& other) const {
+		bool Suit::operator>=(const Suit& other) const {
 			return !(this->_val < other._val);
 		}
 		
-		auto Suit::operator<=>(const Suit& other) const {
+		std::strong_ordering Suit::operator<=>(const Suit& other) const {
 			return this->_val <=> other._val;
 		}
 		
@@ -54,7 +58,7 @@ namespace poker {
 		}
 		
 		std::istream& operator>>(std::istream& is, Suit& obj) {
-			Suit::ValueType value;
+			Suit::ValueUnderlingType value;
 			is >> value;
 			if(Suit::isValid(value))
 				obj = Suit(value);
@@ -77,10 +81,9 @@ namespace poker {
 		}
 		
 		Suit& Suit::operator++() {
-			if(this->_val == Value::Pick) {
-				return *this;
-			}
-			this->_val = static_cast<Value>(static_cast<Suit::ValueType>(this->_val) << Suit::SHIFT_VALUE);
+			if(this->_val == Value::Pick) return *this;
+			
+			this->_val = static_cast<Value>(static_cast<Suit::ValueUnderlingType>(this->_val) << Suit::SHIFT_VALUE);
 			return *this;
 		}
 		
@@ -94,7 +97,7 @@ namespace poker {
 			if(this->_val == Value::Heart) {
 				return *this;
 			}
-			this->_val = static_cast<Value>(static_cast<Suit::ValueType>(this->_val) >> Suit::SHIFT_VALUE);
+			this->_val = static_cast<Value>(static_cast<Suit::ValueUnderlingType>(this->_val) >> Suit::SHIFT_VALUE);
 			return *this;
 		}
 		
@@ -105,19 +108,28 @@ namespace poker {
 		}
 		
 		Suit Suit::operator()(size_t idx) const {
-			if(idx > Suit::VALUE_RANGE - Suit::SHIFT_VALUE)
-				throw std::out_of_range("Cannot generate adequate object. Index is out of range.");
+			if(idx > Suit::VALUE_RANGE - Suit::SHIFT_VALUE_INDEX) throw std::out_of_range("Cannot generate adequate object. Index is out of range.");
 			
-			return Suit(static_cast<Suit::ValueType>(Suit::Value::FIRST) << static_cast<Suit::ValueType>(idx));
+			return Suit(static_cast<Suit::ValueUnderlingType>(Suit::Value::Heart) << static_cast<Suit::ValueUnderlingType>(idx));
 		}
 		
 		Suit::Value Suit::getValue() const {
 			return this->_val;
 		}
 		
-		//	Static methods definitions
-		bool Suit::isValid(ValueType value_to_be_checked) {
-		
+		Suit::ValueUnderlingType Suit::getUnderlingValue() const {
+			return static_cast<Suit::ValueUnderlingType>(this->_val);
 		}
+		
+		//	Static methods definitions
+		bool Suit::isValid(ValueUnderlingType value_to_be_checked) {
+			if (value_to_be_checked == static_cast<ValueUnderlingType>(Value::Heart)) return true;
+			if (value_to_be_checked == static_cast<ValueUnderlingType>(Value::Diamond)) return true;
+			if (value_to_be_checked == static_cast<ValueUnderlingType>(Value::Club)) return true;
+			if (value_to_be_checked == static_cast<ValueUnderlingType>(Value::Pick)) return true;
+			
+			return false;
+		}
+		
 }	//	namespace model
 }	//	namespace poker

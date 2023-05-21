@@ -18,7 +18,6 @@ set(COMPILER_FLAGS
 		-Wall
 		-Wextra
 		-Wcast-align
-		-Wshadow
 		-Wpointer-arith
 		-pedantic
 		-Wconversion

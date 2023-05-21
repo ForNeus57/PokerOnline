@@ -1,6 +1,7 @@
 set(LIBRARY_SOURCE
 		src/card.cpp
-		src/suit.cpp)
+		src/suit.cpp
+		src/rank.cpp)
 
 include_directories(include)
 
