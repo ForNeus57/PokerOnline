@@ -6,7 +6,7 @@ include_directories(include)
 
 add_library(${LIBRARY_NAME} STATIC ${LIBRARY_SOURCE})
 
-find_package(Boost 1.77.0 COMPONENTS system filesystem REQUIRED)
+find_package(Boost 1.74.0 COMPONENTS system filesystem REQUIRED)
 
 if(Boost_FOUND)
 	target_include_directories(${LIBRARY_NAME} PUBLIC ${Boost_INCLUDE_DIRS})
