@@ -22,7 +22,7 @@ jobs:
 
     - name: Setup
       run: |
-          git submodule add https://github.com/google/googletest.git /Common/lib/external/googletest/
+          git submodule add https://github.com/google/googletest.git /home/runner/work/PokerOnline/PokerOnline/Common/lib/external/googletest/
           
           sudo apt-get update
           sudo apt-get install -y libboost-all-dev
