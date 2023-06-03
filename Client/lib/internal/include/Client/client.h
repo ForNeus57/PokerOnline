@@ -5,6 +5,7 @@
 #ifndef POKER_ONLINE_CLIENT_H
 #define POKER_ONLINE_CLIENT_H
 
+
 /**
  * @brief
  */

@@ -1,5 +1,15 @@
 project(ModelModule VERSION ${PROJECT_VERSION} LANGUAGES CXX)
 
+set(INPUT_CONFIG_FILE_PATH
+		${PROJECT_SOURCE_DIR}/conf/Config.h.in
+		)
+
+set(CONFIG_FILE_PATH
+		${PROJECT_SOURCE_DIR}/conf/Config.h
+		)
+
+configure_file(${INPUT_CONFIG_FILE_PATH} ${CONFIG_FILE_PATH})
+
 set(MODULE_NAME
 		Model
 		)
