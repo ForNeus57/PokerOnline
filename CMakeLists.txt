@@ -16,7 +16,6 @@ set(COMPILER_FLAGS
 		-g
 		-std=c++20
 		-Wall
-		-Wextra
 		-Wcast-align
 		-Wpointer-arith
 		-pedantic
