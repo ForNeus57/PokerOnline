@@ -6,8 +6,6 @@ include_directories(include)
 
 add_library(${LIBRARY_NAME} STATIC ${LIBRARY_SOURCE})
 
-set(Boost_INCLUDE_DIR "C:/Program Files/SDK/MinGW_Boost/include")
-set(Boost_LIBRARY_DIR "C:/Program Files/SDK/MinGW_Boost/lib")
 find_package(Boost 1.77.0 COMPONENTS system filesystem REQUIRED)
 
 if(Boost_FOUND)
@@ -16,5 +14,6 @@ if(Boost_FOUND)
 endif()
 
 target_include_directories(${LIBRARY_NAME} PUBLIC include)
+target_include_directories(${LIBRARY_NAME} PRIVATE ${CONFIG_FILE_PATH})
 
 target_compile_options(${LIBRARY_NAME} PRIVATE ${COMPILE_OPTIONS})
