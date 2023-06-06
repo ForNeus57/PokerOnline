@@ -71,7 +71,6 @@ namespace poker {
 				Suit operator++(int);
 				Suit& operator--();
 				Suit operator--(int);
-				Suit operator()(std::size_t idx) const;
 				
 			public:
 				Value getValue() const;
@@ -79,6 +78,8 @@ namespace poker {
 				
 			public:
 				static bool isValid(ValueUnderlingType);
+				static bool isValid(std::size_t idx);
+				static Suit generateAtIndex(std::size_t idx);
 				
 			private:
 		};

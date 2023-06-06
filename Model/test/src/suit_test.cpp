@@ -14,7 +14,6 @@
 
 #include <gtest/gtest.h>
 
-
 namespace poker {
 	
 	class SuitTest : public ::testing::Test {
@@ -33,7 +32,7 @@ namespace poker {
 		
 		protected:
 			std::unique_ptr<Suit> suit;
-			std::vector<Suit::Value> TEST_ENUM_VALUES;
+			std::array<Suit::Value, Suit::VALUE_RANGE> TEST_ENUM_VALUES;
 	};
 	
 	TEST_F(SuitTest, StaticAtributesTest) {
@@ -43,6 +42,7 @@ namespace poker {
 	}
 	
 	TEST_F(SuitTest, StaticMethodsTest) {
+		//	.isValid(...) method test
 		for(uint8_t iterator_value = 0; iterator_value < INT8_MAX; ++iterator_value) {
 			if(iterator_value == 0b1 || iterator_value == 0b10 || iterator_value == 0b100 || iterator_value == 0b1000) {
 				EXPECT_TRUE(Suit::isValid(iterator_value));
@@ -51,6 +51,9 @@ namespace poker {
 			}
 		}
 		EXPECT_FALSE(Suit::isValid(INT8_MAX));
+		
+		//	.generateAtIndex(...) method test
+		for (std::size_t i = 0; i < )
 	}
 	
 	TEST_F(SuitTest, DefaultConstructorTest) {
@@ -97,27 +100,79 @@ namespace poker {
 			Suit first(TEST_ENUM_VALUES[i]);
 			for(std::size_t j = 0; j < TEST_ENUM_VALUES.size(); ++j) {
 				Suit second(TEST_ENUM_VALUES[j]);
-				if(i == j) EXPECT_TRUE(first == second);
-				if(i != j) EXPECT_TRUE(first != second);
-				if(i < j) EXPECT_TRUE(first < second);
-				if(i <= j) EXPECT_TRUE(first <= second);
-				if(i > j) EXPECT_TRUE(first > second);
-				if(i >= j) EXPECT_TRUE(first >= second);
+				if(i == j) {
+					EXPECT_TRUE(first == second);
+					EXPECT_TRUE(first <= second);
+					EXPECT_TRUE(first >= second);
+					
+					EXPECT_FALSE(first != second);
+					EXPECT_FALSE(first < second);
+					EXPECT_FALSE(first > second);
+				}
+				if(i != j) {
+					EXPECT_TRUE(first != second);
+					
+					EXPECT_FALSE(first == second);
+				}
+				if(i < j) {
+					EXPECT_TRUE(first != second);
+					EXPECT_TRUE(first < second);
+					EXPECT_TRUE(first <= second);
+					
+					EXPECT_FALSE(first == second);
+					EXPECT_FALSE(first > second);
+					EXPECT_FALSE(first >= second);
+				}
+				if(i <= j) {
+					EXPECT_TRUE(first <= second);
+					
+					EXPECT_FALSE(first > second);
+				}
+				if(i > j) {
+					EXPECT_TRUE(first != second);
+					EXPECT_TRUE(first > second);
+					EXPECT_TRUE(first >= second);
+					
+					EXPECT_FALSE(first == second);
+					EXPECT_FALSE(first < second);
+					EXPECT_FALSE(first <= second);
+				}
+				if(i >= j) {
+					EXPECT_TRUE(first >= second);
+					
+					EXPECT_FALSE(first < second);
+				}
 				EXPECT_EQ(i <=> j, first <=> second);
 			}
 		}
 	}
 	
 	TEST_F(SuitTest, ToStringTest) {
-		EXPECT_EQ();
-		EXPECT_EQ();
-		EXPECT_EQ();
-		EXPECT_EQ();
+		const std::array<std::string, Suit::VALUE_RANGE> matching_output = {
+			"Heart",
+			"Diamond",
+			"Club",
+			"Pick"
+		};
+		
+		for(std::size_t i = 0; i < TEST_ENUM_VALUES.size(); ++i)
+			EXPECT_EQ(matching_output[i], std::string(Suit(TEST_ENUM_VALUES[i])))
 	}
 	
 	TEST_F(SuitTest, InputOutputOperatorsTest) {
 	
 	}
 	
+	TEST_F(SuitTest, IncrementOperatorsTest) {
+	
+	}
+	
+	TEST_F(SuitTest, DecrementOperatorsTest) {
+	
+	}
+	
+	TEST_F(SuitTest, GettersAndSettersTest) {
+	
+	}
 	
 }	//	namespace poker

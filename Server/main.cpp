@@ -4,7 +4,6 @@
 #include <Server/database_manager.h>
 #include <Common/automata.h>
 #include <Model/card.h>
-//#include <pqxx/pqxx>
 #include <boost/thread.hpp>
 
 int main() {

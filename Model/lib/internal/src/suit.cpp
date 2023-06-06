@@ -107,7 +107,7 @@ namespace poker {
 			return old;
 		}
 		
-		Suit Suit::operator()(size_t idx) const {
+		Suit Suit::generateAtIndex(std::size_t idx) {
 			if(idx > Suit::VALUE_RANGE - Suit::SHIFT_VALUE_INDEX) throw std::out_of_range("Cannot generate adequate object. Index is out of range.");
 			
 			return Suit(static_cast<Suit::ValueUnderlingType>(Suit::Value::Heart) << static_cast<Suit::ValueUnderlingType>(idx));
