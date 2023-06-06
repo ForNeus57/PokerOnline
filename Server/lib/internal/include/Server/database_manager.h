@@ -5,8 +5,8 @@
 #ifndef POKER_ONLINE_DATABASE_MANAGER_H
 #define POKER_ONLINE_DATABASE_MANAGER_H
 
-//#include <pqxx/pqxx>
 
+#include "libpq-fe.h"
 /**
  * @brief
  */
