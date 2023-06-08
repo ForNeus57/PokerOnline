@@ -14,6 +14,8 @@
 
 #include <gtest/gtest.h>
 
+#include <Testing/data_generator.h>
+
 namespace poker {
 	
 	class SuitTest : public ::testing::Test {
@@ -38,22 +40,26 @@ namespace poker {
 	TEST_F(SuitTest, StaticAtributesTest) {
 		EXPECT_EQ(4, Suit::VALUE_RANGE);
 		EXPECT_EQ(1, Suit::SHIFT_VALUE);
-		EXPECT_EQ(1, Suit::SHIFT_VALUE_INDEX);
+		EXPECT_EQ(1, Suit::ADJUST_VALUE_TO_INDEX);
+		EXPECT_EQ(0, Suit::DEFAULT_CREATOR_INDEX);
 	}
 	
 	TEST_F(SuitTest, StaticMethodsTest) {
-		//	.isValid(...) method test
+		//	.isValid(ValueUnderlingType checked_value) method test
 		for(uint8_t iterator_value = 0; iterator_value < INT8_MAX; ++iterator_value) {
 			if(iterator_value == 0b1 || iterator_value == 0b10 || iterator_value == 0b100 || iterator_value == 0b1000) {
-				EXPECT_TRUE(Suit::isValid(iterator_value));
+				EXPECT_TRUE(Suit::isValid(static_cast<Suit::ValueUnderlingType>(iterator_value)));
 			} else {
-				EXPECT_FALSE(Suit::isValid(iterator_value));
+				EXPECT_FALSE(Suit::isValid(static_cast<Suit::ValueUnderlingType>(iterator_value)));
 			}
 		}
-		EXPECT_FALSE(Suit::isValid(INT8_MAX));
+		EXPECT_FALSE(Suit::isValid(static_cast<Suit::ValueUnderlingType>(INT8_MAX)));
+		
+		//	.isValid(std::size_t idx) method test
+		
 		
 		//	.generateAtIndex(...) method test
-		for (std::size_t i = 0; i < )
+		//	for (std::size_t i = 0; i < )
 	}
 	
 	TEST_F(SuitTest, DefaultConstructorTest) {
@@ -156,7 +162,7 @@ namespace poker {
 		};
 		
 		for(std::size_t i = 0; i < TEST_ENUM_VALUES.size(); ++i)
-			EXPECT_EQ(matching_output[i], std::string(Suit(TEST_ENUM_VALUES[i])))
+			EXPECT_EQ(matching_output[i], std::string(Suit(TEST_ENUM_VALUES[i])));
 	}
 	
 	TEST_F(SuitTest, InputOutputOperatorsTest) {

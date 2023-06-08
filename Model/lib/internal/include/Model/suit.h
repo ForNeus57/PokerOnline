@@ -14,6 +14,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <cstddef>
+#include <array>
 
 
 namespace poker {
@@ -30,18 +31,19 @@ namespace poker {
 				using ValueUnderlingType = std::underlying_type<Value>::type;
 				
 			public:
-				enum class Value : uint8_t {
+				enum class Value : ValueUnderlingType {
 					//	Actual values
 					Heart	=	0b1,			//	1
 					Diamond	=	0b10,			//	2
 					Club	=	0b100,			//	4
-					Pick	=	0b1000,			//	8
+					Pick	=	0b1000			//	8
 				};
 				
 			public:
 				constexpr static std::size_t VALUE_RANGE = 4;
 				constexpr static std::size_t SHIFT_VALUE = 1;
-				constexpr static std::size_t SHIFT_VALUE_INDEX = 1;
+				constexpr static std::size_t ADJUST_VALUE_TO_INDEX = 1;
+				constexpr static std::size_t DEFAULT_CREATOR_INDEX = 0;
 			
 			private:
 				Value _val;
@@ -77,9 +79,10 @@ namespace poker {
 				ValueUnderlingType getUnderlingValue() const;
 				
 			public:
-				static bool isValid(ValueUnderlingType);
+				static bool isValid(ValueUnderlingType checked_value);
 				static bool isValid(std::size_t idx);
 				static Suit generateAtIndex(std::size_t idx);
+				static std::array<Suit, VALUE_RANGE> generateIterable();
 				
 			private:
 		};

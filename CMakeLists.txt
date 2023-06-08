@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.24)
 
-project(Poker_Online VERSION 0.0.0.2 LANGUAGES CXX)
+project(Poker_Online VERSION 0.0.0.3 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -22,6 +22,10 @@ set(COMPILER_FLAGS
 		-Wconversion
 		-O3
 		-pipe
+		)
+
+set(TEST_LIBRARY_NAME
+		Testing_lib
 		)
 
 string(TIMESTAMP BUILD_DATE "%Y/%m/%d")
