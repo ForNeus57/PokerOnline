@@ -31,6 +31,6 @@ add_subdirectory(test)
 
 add_executable(${PROJECT_NAME} ${MAIN_PATH})
 
-target_link_libraries(${PROJECT_NAME} PRIVATE ${LIBRARY_NAME})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${LIBRARY_NAME} ${TEST_LIBRARY_NAME})
 
 target_compile_options(${PROJECT_NAME} PRIVATE ${COMPILER_FLAGS})

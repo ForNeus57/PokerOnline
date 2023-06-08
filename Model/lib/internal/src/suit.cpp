@@ -22,7 +22,7 @@ namespace poker {
 			if(Suit::isValid(value))
 				this->_val = static_cast<Value>(value);
 			else
-				throw std::invalid_argument("Unknown or wrong suit value provided!");
+				throw std::invalid_argument("Unknown or wrong suit value provided for constructor!");
 		}
 		
 		bool Suit::operator==(const Suit& other) const {
@@ -78,6 +78,7 @@ namespace poker {
 				case Value::Pick:
 					return "Pick";
 			}
+			return "";
 		}
 		
 		Suit& Suit::operator++() {
@@ -94,9 +95,9 @@ namespace poker {
 		}
 		
 		Suit& Suit::operator--() {
-			if(this->_val == Value::Heart) {
+			if(this->_val == Value::Heart)
 				return *this;
-			}
+			
 			this->_val = static_cast<Value>(static_cast<Suit::ValueUnderlingType>(this->_val) >> Suit::SHIFT_VALUE);
 			return *this;
 		}
@@ -108,7 +109,7 @@ namespace poker {
 		}
 		
 		Suit Suit::generateAtIndex(std::size_t idx) {
-			if(idx > Suit::VALUE_RANGE - Suit::SHIFT_VALUE_INDEX) throw std::out_of_range("Cannot generate adequate object. Index is out of range.");
+			if(idx > Suit::VALUE_RANGE - Suit::ADJUST_VALUE_TO_INDEX) throw std::out_of_range("Cannot generate adequate object. Index is out of range.");
 			
 			return Suit(static_cast<Suit::ValueUnderlingType>(Suit::Value::Heart) << static_cast<Suit::ValueUnderlingType>(idx));
 		}
@@ -122,13 +123,24 @@ namespace poker {
 		}
 		
 		//	Static methods definitions
-		bool Suit::isValid(ValueUnderlingType value_to_be_checked) {
-			if (value_to_be_checked == static_cast<ValueUnderlingType>(Value::Heart)) return true;
-			if (value_to_be_checked == static_cast<ValueUnderlingType>(Value::Diamond)) return true;
-			if (value_to_be_checked == static_cast<ValueUnderlingType>(Value::Club)) return true;
-			if (value_to_be_checked == static_cast<ValueUnderlingType>(Value::Pick)) return true;
+		bool Suit::isValid(ValueUnderlingType checked_value) {
+			if (checked_value == static_cast<ValueUnderlingType>(Value::Heart)) return true;
+			if (checked_value == static_cast<ValueUnderlingType>(Value::Diamond)) return true;
+			if (checked_value == static_cast<ValueUnderlingType>(Value::Club)) return true;
+			if (checked_value == static_cast<ValueUnderlingType>(Value::Pick)) return true;
 			
 			return false;
+		}
+		bool Suit::isValid(std::size_t idx) {
+			return idx < Suit::VALUE_RANGE;
+		}
+		std::array<Suit, Suit::VALUE_RANGE> Suit::generateIterable() {
+			std::array<Suit, Suit::VALUE_RANGE> output{};
+			
+			for (std::size_t itter = Suit::DEFAULT_CREATOR_INDEX; Suit::isValid(itter); ++itter)
+				output[itter] = Suit::generateAtIndex(itter);
+			
+			return output;
 		}
 		
 }	//	namespace model

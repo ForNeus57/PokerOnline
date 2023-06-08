@@ -6,6 +6,7 @@
 #include <Model/card.h>
 #include <boost/thread.hpp>
 
+
 int main() {
 	return 0;
 }
