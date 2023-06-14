@@ -4,7 +4,7 @@
  * @date 	12.05.2023
  * @brief	Header file relating to Suit class.
  * @see		suit.cpp file.
- * @version 0.5.2
+ * @version 0.9.0
 **/
 
 #ifndef POKER_ONLINE_SUIT_H
@@ -66,13 +66,7 @@ namespace poker {
 				bool operator<=(const Suit& other) const;
 				bool operator>=(const Suit& other) const;
 				std::strong_ordering operator<=>(const Suit& other) const;
-				friend std::ostream& operator<<(std::ostream& os, const Suit& obj);
-				friend std::istream& operator>>(std::istream& is, Suit& obj);
 				explicit operator std::string() const;
-				Suit& operator++();
-				Suit operator++(int);
-				Suit& operator--();
-				Suit operator--(int);
 				
 			public:
 				Value getValue() const;
@@ -81,11 +75,11 @@ namespace poker {
 			public:
 				static bool isValid(ValueUnderlingType checked_value);
 				static bool isValid(std::size_t idx);
-				static Suit generateAtIndex(std::size_t idx);
 				static std::array<Suit, VALUE_RANGE> generateIterable();
 				
 			private:
 		};
+
 }	//	namespace model
 }	//	namespace poker
 
