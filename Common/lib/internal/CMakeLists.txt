@@ -1,8 +1,10 @@
 set(LIBRARY_SOURCE
 		src/Common/automata.cpp
+		src/Common/poker_exception.cpp
 		)
 
 set(TEST_LIBRARY_SOURCE
+		src/Testing/file_generator.cpp
 		src/Testing/data_generator.cpp
 		)
 
@@ -17,12 +19,11 @@ if(Boost_FOUND)
 	target_include_directories(${LIBRARY_NAME} PUBLIC ${Boost_INCLUDE_DIRS})
 	target_link_libraries(${LIBRARY_NAME} PUBLIC ${Boost_LIBRARIES} ws2_32)
 endif()
-
+target_include_directories(${TEST_LIBRARY_NAME} PUBLIC include/Testing)
 target_link_libraries(${TEST_LIBRARY_NAME} PUBLIC ${LIBRARY_NAME})
 
 target_include_directories(${LIBRARY_NAME} PUBLIC include/Common)
 target_include_directories(${LIBRARY_NAME} PRIVATE ${CONFIG_FILE_PATH})
 
-target_include_directories(${TEST_LIBRARY_NAME} PUBLIC include/Testing)
 
 target_compile_options(${LIBRARY_NAME} PRIVATE ${COMPILE_OPTIONS})

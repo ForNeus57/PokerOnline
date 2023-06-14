@@ -4,7 +4,7 @@
  * @date 	12.05.2023
  * @brief	Source file relating to Suit class.
  * @see		suit.h file.
- * @version 0.7.1
+ * @version 0.9.0
 **/
 
 #include "Model/suit.h"
@@ -52,21 +52,6 @@ namespace poker {
 		std::strong_ordering Suit::operator<=>(const Suit& other) const {
 			return this->_val <=> other._val;
 		}
-		
-		std::ostream& operator<<(std::ostream& os, const Suit& obj) {
-			return os << std::string(obj);
-		}
-		
-		std::istream& operator>>(std::istream& is, Suit& obj) {
-			Suit::ValueUnderlingType value;
-			is >> value;
-			if(Suit::isValid(value))
-				obj = Suit(value);
-			else
-				is.setstate(std::ios::failbit);
-			return is;
-		}
-		
 		Suit::operator std::string() const {
 			switch(this->_val) {
 				case Value::Heart:
@@ -79,39 +64,6 @@ namespace poker {
 					return "Pick";
 			}
 			return "";
-		}
-		
-		Suit& Suit::operator++() {
-			if(this->_val == Value::Pick) return *this;
-			
-			this->_val = static_cast<Value>(static_cast<Suit::ValueUnderlingType>(this->_val) << Suit::SHIFT_VALUE);
-			return *this;
-		}
-		
-		Suit Suit::operator++(int) {
-			Suit old = *this;
-			operator++();
-			return old;
-		}
-		
-		Suit& Suit::operator--() {
-			if(this->_val == Value::Heart)
-				return *this;
-			
-			this->_val = static_cast<Value>(static_cast<Suit::ValueUnderlingType>(this->_val) >> Suit::SHIFT_VALUE);
-			return *this;
-		}
-		
-		Suit Suit::operator--(int) {
-			Suit old = *this;
-			operator--();
-			return old;
-		}
-		
-		Suit Suit::generateAtIndex(std::size_t idx) {
-			if(idx > Suit::VALUE_RANGE - Suit::ADJUST_VALUE_TO_INDEX) throw std::out_of_range("Cannot generate adequate object. Index is out of range.");
-			
-			return Suit(static_cast<Suit::ValueUnderlingType>(Suit::Value::Heart) << static_cast<Suit::ValueUnderlingType>(idx));
 		}
 		
 		Suit::Value Suit::getValue() const {
@@ -138,7 +90,7 @@ namespace poker {
 			std::array<Suit, Suit::VALUE_RANGE> output{};
 			
 			for (std::size_t itter = Suit::DEFAULT_CREATOR_INDEX; Suit::isValid(itter); ++itter)
-				output[itter] = Suit::generateAtIndex(itter);
+				output[itter] = Suit(itter);
 			
 			return output;
 		}

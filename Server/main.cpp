@@ -6,7 +6,9 @@
 #include <Model/card.h>
 #include <boost/thread.hpp>
 
+#include <cstdlib>
+#include <iostream>
 
 int main() {
-	return 0;
+	return EXIT_SUCCESS;
 }
