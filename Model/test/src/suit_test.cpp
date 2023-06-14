@@ -14,7 +14,7 @@
 
 #include <gtest/gtest.h>
 
-#include <Testing/data_generator.h>
+#include <Testing/file_generator.h>
 
 namespace poker {
 	
@@ -22,7 +22,7 @@ namespace poker {
 		protected:
 			SuitTest() : suit(nullptr), TEST_ENUM_VALUES({Suit::Value::Heart, Suit::Value::Diamond, Suit::Value::Club, Suit::Value::Pick}) {}
 			
-			~SuitTest() {}
+			~SuitTest() override = default;
 			
 			void SetUp() override {
 			
@@ -56,10 +56,8 @@ namespace poker {
 		EXPECT_FALSE(Suit::isValid(static_cast<Suit::ValueUnderlingType>(INT8_MAX)));
 		
 		//	.isValid(std::size_t idx) method test
-		
-		
-		//	.generateAtIndex(...) method test
-		//	for (std::size_t i = 0; i < )
+		for (std::size_t iterator_value = 0; iterator_value < 10000; ++iterator_value)
+			EXPECT_EQ(Suit::isValid(iterator_value), iterator_value < Suit::VALUE_RANGE);
 	}
 	
 	TEST_F(SuitTest, DefaultConstructorTest) {
@@ -165,20 +163,15 @@ namespace poker {
 			EXPECT_EQ(matching_output[i], std::string(Suit(TEST_ENUM_VALUES[i])));
 	}
 	
-	TEST_F(SuitTest, InputOutputOperatorsTest) {
-	
-	}
-	
-	TEST_F(SuitTest, IncrementOperatorsTest) {
-	
-	}
-	
-	TEST_F(SuitTest, DecrementOperatorsTest) {
-	
-	}
-	
-	TEST_F(SuitTest, GettersAndSettersTest) {
-	
+	TEST_F(SuitTest, GettersTest) {
+		//	.getValue()
+		for (auto & i : TEST_ENUM_VALUES)
+			EXPECT_EQ(Suit(i).getValue(), i);
+
+		//	.getUnderlingValue()
+		for (auto & i : TEST_ENUM_VALUES)
+			EXPECT_EQ(Suit(i).getUnderlingValue(), static_cast<Suit::ValueUnderlingType>(i));
+
 	}
 	
 }	//	namespace poker
