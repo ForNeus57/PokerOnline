@@ -1,3 +1,3 @@
 # PokerOnline
 
-![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
+[![CTest](https://github.com/ForNeus57/PokerOnline/actions/workflows/cmake.yml/badge.svg?branch=main)](https://github.com/ForNeus57/PokerOnline/actions/workflows/cmake.yml)
