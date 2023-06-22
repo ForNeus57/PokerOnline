@@ -1,7 +1,7 @@
 set(LIBRARY_SOURCE
 		src/database_manager.cpp
 		src/server.cpp
-		)
+		src/database_config_parser.cpp)
 
 add_library(${LIBRARY_NAME} STATIC ${LIBRARY_SOURCE})
 

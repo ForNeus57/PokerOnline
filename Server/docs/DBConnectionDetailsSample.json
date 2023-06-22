@@ -1,0 +1,6 @@
+{
+  "server"    : "/* Your server ip or domain */",
+  "username"  : "/* Your username to db */",
+  "password"  : "/* Your password to a given username */",
+  "schema"    : "/* Your shema_name */"
+}

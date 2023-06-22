@@ -55,15 +55,15 @@ namespace poker {
 		Suit::operator std::string() const {
 			switch(this->_val) {
 				case Value::Heart:
-					return "Heart";
+					return "Suit(_val=Suit::Value::Heart)";
 				case Value::Diamond:
-					return "Diamond";
+					return "Suit(_val=Suit::Value::Diamond)";
 				case Value::Club:
-					return "Club";
+					return "Suit(_val=Suit::Value::Club)";
 				case Value::Pick:
-					return "Pick";
+					return "Suit(_val=Suit::Value::Pick)";
 			}
-			return "";
+			return "Suit(ERROR)";
 		}
 		
 		Suit::Value Suit::getValue() const {
