@@ -1,0 +1,23 @@
+@startuml
+participant MainThread
+participant DatabaseThread
+
+activate MainThread
+activate DatabaseThread
+
+MainThread -> DatabaseThread: Request
+DatabaseThread -> MainThread: Response
+
+MainThread -> MainThread: Perform Action A
+MainThread -> DatabaseThread: Request
+DatabaseThread -> DatabaseThread: Perform Action B
+DatabaseThread -> MainThread: Response
+
+MainThread -> MainThread: Perform Action C
+MainThread -> DatabaseThread: Request
+DatabaseThread -> DatabaseThread: Perform Action D
+DatabaseThread -> MainThread: Response
+
+deactivate MainThread
+deactivate DatabaseThread
+@enduml
