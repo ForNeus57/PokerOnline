@@ -6,9 +6,9 @@
 #define POKER_ONLINE_DATABASE_MANAGER_H
 
 
-#include "../../../../external/mysql/include/jdbc/cppconn/driver.h"
-#include "../../../../external/mysql/include/jdbc/cppconn/exception.h"
-#include "../../../../external/mysql/include/jdbc/cppconn/prepared_statement.h"
+#include <cppconn/driver.h>
+#include <cppconn/exception.h>
+#include <cppconn/prepared_statement.h>
 
 /**
  * @brief
