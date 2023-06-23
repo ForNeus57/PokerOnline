@@ -17,9 +17,23 @@ namespace poker {
 			private:
 				Suit suit;
 				Rank rank;
+
 			public:
 				Card();
 				explicit Card(std::int8_t);
+				Card(const Card& value) = default;
+				Card(Card&&) noexcept = default;
+				~Card() = default;
+
+			public:
+				Card& operator=(const Card& other) = default;
+				Card& operator=(Card&& other) noexcept = default;
+				bool operator==(const Card& other) const;
+				bool operator!=(const Card& other) const;
+
+			public:
+				Suit getSuit() const;
+				Rank getRank() const;
 
 		};
 }	//	namespace model

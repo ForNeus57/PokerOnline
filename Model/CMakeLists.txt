@@ -8,7 +8,7 @@ set(CONFIG_FILE_PATH
 		${PROJECT_SOURCE_DIR}/conf/Config.h
 		)
 
-configure_file(${INPUT_CONFIG_FILE_PATH} ${CONFIG_FILE_PATH})
+configure_file(${INPUT_CONFIG_FILE_PATH} ${CONFIG_FILE_PATH} COPYONLY)
 
 set(MODULE_NAME
 		Model
