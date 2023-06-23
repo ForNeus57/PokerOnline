@@ -7,9 +7,7 @@
 #endif
 
 #include <iostream>
-
 //#include <Testing/file_generator.h>
-
 #include <vector>
 
 #include <boost/asio.hpp>
@@ -19,7 +17,6 @@
 int main() {
 	
 	boost::system::error_code ec;
-
 	boost::asio::io_context context;
 
 	boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::make_address("93.184.216.34", ec), 80);
@@ -37,6 +34,5 @@ int main() {
 	if (socket.is_open()) {
 		
 	}
-
 	return EXIT_SUCCESS;
 }

@@ -31,6 +31,7 @@
 *.out
 *.app
 /Build/
+
 /Server/docs/DatabaseDumps/
 /Server/conf/DBConnectionDetails.json
 /Server/conf/CreateDatabaseDumps.ps1
