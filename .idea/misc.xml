@@ -14,5 +14,8 @@
       <file path="$PROJECT_DIR$/Model/lib" />
       <file path="$PROJECT_DIR$/Server/lib" />
     </libraryRoots>
+    <excludeRoots>
+      <file path="$PROJECT_DIR$/Server/docs/DatabaseDumps" />
+    </excludeRoots>
   </component>
 </project>

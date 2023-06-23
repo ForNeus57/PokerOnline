@@ -5,8 +5,18 @@
 #ifndef POKER_ONLINE_SERVER_H
 #define POKER_ONLINE_SERVER_H
 
-class Server {
+namespace poker {
+	inline namespace server {
+		/**
+		 * @brief
+		 *
+		 * @note    This class resembles Singleton design patter.
+		 */
+		class Server {
+		
+		};
+}	//	namespace server
+}	//	namespace poker
 
-};
 
 #endif //POKER_ONLINE_SERVER_H
