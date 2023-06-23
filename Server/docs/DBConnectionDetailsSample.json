@@ -1,6 +1,7 @@
 {
-  "server"    : "/* Your server ip or domain */",
+  "server"    : "/* Your database server ip or domain */",
+  "port"      : "/* Your database server port */",
   "username"  : "/* Your username to db */",
   "password"  : "/* Your password to a given username */",
-  "schema"    : "/* Your shema_name */"
+  "databases" : "/* Your schema_name */"
 }
