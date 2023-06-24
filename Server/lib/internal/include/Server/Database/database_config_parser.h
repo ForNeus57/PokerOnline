@@ -13,15 +13,18 @@
 class DatabaseConfigParser {
 public:
     const static std::string server_key;
+	const static std::string port_key;
     const static std::string username_key;
     const static std::string password_key;
-    const static std::string schema_key;
+    const static std::string databases_key;
 private:
     std::filesystem::path config_file_path;
     boost::property_tree::ptree pt;
-
+public:
     DatabaseConfigParser(const std::filesystem::path& input_path);
 
+public:
+	void parse();
 
 
 };

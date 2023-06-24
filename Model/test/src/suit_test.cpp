@@ -153,10 +153,10 @@ namespace poker {
 	
 	TEST_F(SuitTest, ToStringTest) {
 		const std::array<std::string, Suit::VALUE_RANGE> matching_output = {
-			"Heart",
-			"Diamond",
-			"Club",
-			"Pick"
+			"Suit(_val=Suit::Value::Heart)",
+			"Suit(_val=Suit::Value::Diamond)",
+			"Suit(_val=Suit::Value::Club)",
+			"Suit(_val=Suit::Value::Pick)"
 		};
 		
 		for(std::size_t i = 0; i < TEST_ENUM_VALUES.size(); ++i)

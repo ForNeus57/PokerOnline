@@ -7,9 +7,10 @@
 //  Static class attributes:
 
 const std::string DatabaseConfigParser::server_key = "server";
+const std::string DatabaseConfigParser::port_key = "port";
 const std::string DatabaseConfigParser::username_key = "username";
 const std::string DatabaseConfigParser::password_key = "password";
-const std::string DatabaseConfigParser::schema_key = "schema";
+const std::string DatabaseConfigParser::databases_key = "databases";
 
 //  Method definitions:
 

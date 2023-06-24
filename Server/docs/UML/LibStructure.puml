@@ -21,7 +21,11 @@ package "Model" <<Module>> {
 
 package "Server" <<Module>> {
 	[Server_lib] <<Library>> #Navy
-	[MySQLConnector] <<Library>> #Navy
+	[mysqlcppconn] <<Library>> #Navy
+}
+
+package "Client" <<Module>> {
+	[Client_lib] <<Library>> #Navy
 }
 
 package "MySQL" <<Server>> {
@@ -34,9 +38,16 @@ googletest --> Testing_lib
 
 Common_lib --> Testing_lib
 Common_lib --> Model_lib
-Common_lib --> Server_lib
 Model_lib --> Server_lib
 
-MySQLConnector --> Server_lib
+mysqlcppconn --> Server_lib
+
+interface IMySQLConnector <<Interface>> #Navy
+Server_lib --> IMySQLConnector
+IMySQLConnector --> "MySQL" <<Server>>
+
+interface IPokerProtocol <<Interface>> #Navy
+Server_lib --> IPokerProtocol
+IPokerProtocol --> Client
 
 @enduml

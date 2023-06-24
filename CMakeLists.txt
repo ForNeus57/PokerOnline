@@ -35,4 +35,6 @@ add_subdirectory(${PROJECT_SOURCE_DIR}/Client)
 add_subdirectory(${PROJECT_SOURCE_DIR}/Common)
 add_subdirectory(${PROJECT_SOURCE_DIR}/Model)
 add_subdirectory(${PROJECT_SOURCE_DIR}/Server)
+
+# include(CTest)
 enable_testing()

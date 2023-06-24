@@ -1,7 +1,7 @@
 project(CommonModule VERSION ${PROJECT_VERSION} LANGUAGES CXX)
 
 set(INPUT_CONFIG_FILE_PATH
-		${PROJECT_SOURCE_DIR}/conf/Config.h.in
+		${PROJECT_SOURCE_DIR}/conf/Config.in
 		)
 
 set(CONFIG_FILE_PATH
