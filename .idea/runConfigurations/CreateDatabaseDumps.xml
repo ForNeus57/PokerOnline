@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="CreateDatabaseDumps" type="PowerShellRunType" factoryName="PowerShell" scriptUrl="C:\Users\domin\CLionProjects\PokerOnline\Server\conf\CreateDatabaseDumps.ps1" scriptParameters="-jsonConfigFilePath &quot;./Server/conf/DBConnectionDetails.json&quot; -dumpFolderPath &quot;./Server/docs/DatabaseDumps&quot; -MaximumFolderNumber 10" workingDirectory="C:\Users\domin\CLionProjects\PokerOnline" executablePath="$PROJECT_DIR$/../../../../Windows/System32/WindowsPowerShell/v1.0/powershell.exe">
+    <envs />
+    <method v="2" />
+  </configuration>
+</component>

@@ -30,7 +30,7 @@
 *.exe
 *.out
 *.app
-/Build/
+/build/
 
 /Server/docs/DatabaseDumps/
 /Server/conf/DBConnectionDetails.json

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.24)
 
-project(PokerOnline VERSION 0.0.0.5 LANGUAGES CXX)
+project(PokerOnline VERSION 0.0.0.6 LANGUAGES CXX)
 
 #include(CTest)
 enable_testing()
@@ -30,7 +30,6 @@ set(COMPILER_FLAGS
 		-O3
 		-pipe
 		)
-
 
 set(TEST_LIBRARY_NAME
 		Testing_lib

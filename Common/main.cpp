@@ -15,7 +15,7 @@
 #include <boost/asio/ts/internet.hpp>
 
 int main() {
-	
+
 	boost::system::error_code ec;
 	boost::asio::io_context context;
 
@@ -32,7 +32,8 @@ int main() {
 	}
 
 	if (socket.is_open()) {
-		
+
 	}
+
 	return EXIT_SUCCESS;
 }
