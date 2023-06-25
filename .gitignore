@@ -32,5 +32,5 @@
 *.app
 /build/
 
-/Server/docs/DatabaseDumps/
-/Server/conf/DBConnectionDetails.json
+/server/docs/database_dumps/
+/server/conf/connection_details.db.json
