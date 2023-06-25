@@ -6,6 +6,7 @@
 #define POKER_ONLINE_DATABASE_CONFIG_PARSER_H
 
 #include <filesystem>
+#include <tuple>
 
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
@@ -24,7 +25,7 @@ public:
     DatabaseConfigParser(const std::filesystem::path& input_path);
 
 public:
-	void parse();
+	std::tuple<std::string, std::string, std::string, std::string, std::vector<std::string>> parse();
 
 
 };
