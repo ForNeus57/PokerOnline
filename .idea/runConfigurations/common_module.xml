@@ -4,6 +4,7 @@
       <option name="CMake.Explicit.Target" explicitTargetName="clean" />
       <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       <option name="RunConfigurationTask" enabled="true" run_configuration_name="All CTest" run_configuration_type="CTestRunConfiguration" />
+      <option name="CMake.Explicit.Target" elevated="true" predefinedTargetName="common_docs" />
     </method>
   </configuration>
 </component>
