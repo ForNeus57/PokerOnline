@@ -5,6 +5,8 @@
 #ifndef POKER_ONLINE_SERVER_H
 #define POKER_ONLINE_SERVER_H
 
+#include <config.h>
+
 namespace poker {
 	inline namespace server {
 		/**

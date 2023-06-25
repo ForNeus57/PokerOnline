@@ -5,10 +5,14 @@ set(INPUT_CONFIG_FILE_PATH
 		)
 
 set(CONFIG_FILE_PATH
-		${PROJECT_BINARY_DIR}/conf/config.h
+		${PROJECT_BINARY_DIR}/conf
 		)
 
-configure_file(${INPUT_CONFIG_FILE_PATH} ${CONFIG_FILE_PATH})
+set(CONFIG_FILE_NAME
+		config.h
+		)
+
+configure_file(${INPUT_CONFIG_FILE_PATH} ${CONFIG_FILE_PATH}/${CONFIG_FILE_NAME})
 
 set(MODULE_NAME
 		client
