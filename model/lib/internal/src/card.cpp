@@ -4,8 +4,10 @@
 #include "model/card.h"
 
 namespace poker::model {
-		Card::Card() {
-		
-		}
+
+	Card::Card() {
+
 	}
+
+}
 

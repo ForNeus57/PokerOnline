@@ -30,7 +30,10 @@
 *.exe
 *.out
 *.app
-/build/
 
-/server/docs/database_dumps/
-/server/conf/connection_details.db.json
+./.idea/dataSources/
+
+./build/
+
+./server/docs/database_dumps/
+./server/conf/connection_details.db.json

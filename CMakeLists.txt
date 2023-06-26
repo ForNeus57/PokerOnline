@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.24)
 
-project(PokerOnline VERSION 0.0.0.7 LANGUAGES CXX)
+project(Poker_Online VERSION 0.0.0.7 LANGUAGES CXX)
 
 #include(CTest)
 enable_testing()

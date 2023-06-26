@@ -25,8 +25,8 @@ find_package(Doxygen)
 
 if (DOXYGEN_FOUND)
 	# set input and output files
-	set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/../../docs/doxygen/Doxyfile.in)
-	set(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/../../docs/doxygen/Doxyfile.out)
+	set(DOXYGEN_IN ${PROJECT_SOURCE_DIR}/docs/doxygen/Doxyfile.in)
+	set(DOXYGEN_OUT ${PROJECT_BINARY_DIR}/docs/doxygen/Doxyfile.out)
 
 	# request to configure the file
 	configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)

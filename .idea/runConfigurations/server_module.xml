@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="server_module" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="PokerOnline" TARGET_NAME="server_module" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="PokerOnline" RUN_TARGET_NAME="server_module">
+  <configuration default="false" name="server_module" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Poker_Online" TARGET_NAME="server_module" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Poker_Online" RUN_TARGET_NAME="server_module">
     <method v="2">
       <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       <option name="RunConfigurationTask" enabled="true" run_configuration_name="All CTest" run_configuration_type="CTestRunConfiguration" />

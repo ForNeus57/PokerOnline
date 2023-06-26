@@ -2,16 +2,24 @@
 // Created by Dominik on 10.05.2023.
 //
 
-#ifndef POKER_ONLINE_CLIENT_H
-#define POKER_ONLINE_CLIENT_H
+#ifndef POKER_ONLINE_CLIENT_CLIENT_CLIENT_H
+#define POKER_ONLINE_CLIENT_CLIENT_CLIENT_H
 
 
-/**
- * @brief
- */
-class Client {
+//	Includes
+
+namespace poker::client {
+
+	/**
+	 * @brief
+	 */
+	class Client {
 	public:
 		Client();
-};
 
-#endif	//	POKER_ONLINE_CLIENT_H
+	};
+
+}	//	namespace poker::client
+
+
+#endif	//	POKER_ONLINE_CLIENT_CLIENT_CLIENT_H

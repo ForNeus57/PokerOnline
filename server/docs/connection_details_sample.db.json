@@ -3,8 +3,5 @@
   "port"      : "/* Your database server port */",
   "username"  : "/* Your username to db */",
   "password"  : "/* Your password to a given username */",
-  "databases" : [
-    "/* Your database_name_1 */",
-    "/* Your database_name_2 */"
-  ]
+  "databases" : "/* Your database_name */"
 }

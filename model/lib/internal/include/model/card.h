@@ -2,43 +2,43 @@
 // Created by Dominik on 10.05.2023.
 //
 
-#ifndef POKER_ONLINE_CARD_H
-#define POKER_ONLINE_CARD_H
+#ifndef POKER_ONLINE_MODEL_MODEL_CARD_H
+#define POKER_ONLINE_MODEL_MODEL_CARD_H
+
 
 #include <model/suit.h>
 #include <model/rank.h>
 
-namespace poker {
- 	inline namespace model {
-		/**
-		 * @brief
-		 */
-		class Card {
-			private:
-				Suit suit;
-				Rank rank;
+namespace poker::model {
 
-			public:
-				Card();
-				explicit Card(std::int8_t);
-				Card(const Card& value) = default;
-				Card(Card&&) noexcept = default;
-				~Card() = default;
+	/**
+	 * @brief
+	 */
+	class Card {
+	private:
+		Suit suit;
+		Rank rank;
 
-			public:
-				Card& operator=(const Card& other) = default;
-				Card& operator=(Card&& other) noexcept = default;
-				bool operator==(const Card& other) const;
-				bool operator!=(const Card& other) const;
+	public:
+		Card();
+		explicit Card(std::int8_t);
+		Card(const Card& value) = default;
+		Card(Card&&) noexcept = default;
+		~Card() = default;
 
-			public:
-				Suit getSuit() const;
-				Rank getRank() const;
+	public:
+		Card& operator=(const Card& other) = default;
+		Card& operator=(Card&& other) noexcept = default;
+		bool operator==(const Card& other) const;
+		bool operator!=(const Card& other) const;
 
-		};
-}	//	namespace model
-}	//	namespace poker
+	public:
+		Suit getSuit() const;
+		Rank getRank() const;
+
+	};
+
+}	//	namespace poker::model
 
 
-
-#endif    //	POKER_ONLINE_CARD_H
+#endif	//	POKER_ONLINE_MODEL_MODEL_CARD_H

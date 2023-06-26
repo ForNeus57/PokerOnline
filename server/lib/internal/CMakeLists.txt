@@ -7,10 +7,13 @@ set(SOURCE_DIR
 		)
 
 set(LIBRARY_SOURCE
-		${SOURCE_DIR}/database_manager.cpp
+		${SOURCE_DIR}/config.cpp
+		${SOURCE_DIR}/config_parser.cpp
+		${SOURCE_DIR}/controller.cpp
+		${SOURCE_DIR}/request.cpp
 		${SOURCE_DIR}/server.cpp
-		${SOURCE_DIR}/database_config_parser.cpp
-		${SOURCE_DIR}/database_config.cpp
+		${SOURCE_DIR}/thread.cpp
+		${SOURCE_DIR}/users.cpp
 		)
 
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${LIBRARY_SOURCE})
@@ -31,8 +34,8 @@ find_package(Doxygen)
 
 if (DOXYGEN_FOUND)
 	# set input and output files
-	set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/../../docs/doxygen/Doxyfile.in)
-	set(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/../../docs/doxygen/Doxyfile.out)
+	set(DOXYGEN_IN ${PROJECT_SOURCE_DIR}/docs/doxygen/Doxyfile.in)
+	set(DOXYGEN_OUT ${PROJECT_BINARY_DIR}/docs/doxygen/Doxyfile.out)
 
 	# request to configure the file
 	configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)

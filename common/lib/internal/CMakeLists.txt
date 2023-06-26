@@ -7,8 +7,9 @@ set(SOURCE_DIR
 		)
 
 set(LIBRARY_SOURCE
-		${SOURCE_DIR}/common/automata.cpp
-		${SOURCE_DIR}/common/poker_exception.cpp
+		${SOURCE_DIR}/${MODULE_NAME}/automata.cpp
+		${SOURCE_DIR}/${MODULE_NAME}/poker_exception.cpp
+		${SOURCE_DIR}/${MODULE_NAME}/thread.cpp
 		)
 
 set(TEST_LIBRARY_SOURCE
@@ -43,8 +44,8 @@ find_package(Doxygen)
 
 if (DOXYGEN_FOUND)
 	# set input and output files
-	set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/../../docs/doxygen/Doxyfile.in)
-	set(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/../../docs/doxygen/Doxyfile.out)
+	set(DOXYGEN_IN ${PROJECT_SOURCE_DIR}/docs/doxygen/Doxyfile.in)
+	set(DOXYGEN_OUT ${PROJECT_BINARY_DIR}/docs/doxygen/Doxyfile.out)
 
 	# request to configure the file
 	configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)

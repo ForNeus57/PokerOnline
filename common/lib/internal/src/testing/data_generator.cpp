@@ -3,3 +3,9 @@
 //
 
 #include "testing/data_generator.h"
+
+namespace poker::testing {
+
+	//	Code
+
+}

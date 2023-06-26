@@ -2,20 +2,29 @@
 // Created by Dominik on 11.06.2023.
 //
 
-#ifndef POKER_ONLINE_POKER_EXCEPTION_H
-#define POKER_ONLINE_POKER_EXCEPTION_H
+#ifndef POKER_ONLINE_COMMON_COMMON_POKER_EXCEPTION_H
+#define POKER_ONLINE_COMMON_COMMON_POKER_EXCEPTION_H
 
-#include <stdexcept>
 
-namespace poker {
-	
-	inline namespace common {
-		
-		class PokerException : public std::exception {
+#include <exception>
+#include <string>
 
-		};
-		
-}	//	namespace common
-}	//	namespace poker
+namespace poker::common {
 
-#endif	//	POKER_ONLINE_POKER_EXCEPTION_H
+	class PokerException: public std::exception {
+	private:
+		std::string message;
+
+	public:
+		explicit PokerException(std::string  msg);
+		virtual ~PokerException() = default;
+
+	public:
+		const char* what() const noexcept override;
+
+	};
+
+}	//	namespace poker::common
+
+
+#endif	//	POKER_ONLINE_COMMON_COMMON_POKER_EXCEPTION_H

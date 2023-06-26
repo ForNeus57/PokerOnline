@@ -9,3 +9,8 @@
 
 #include "model/rank.h"
 
+namespace poker::model {
+
+	//	Code
+
+}

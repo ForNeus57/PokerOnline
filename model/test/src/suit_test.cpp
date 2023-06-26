@@ -16,25 +16,25 @@
 
 #include <testing/file_generator.h>
 
-namespace poker {
+namespace poker::model {
 	
 	class SuitTest : public ::testing::Test {
-		protected:
-			SuitTest() : suit(nullptr), TEST_ENUM_VALUES({Suit::Value::Heart, Suit::Value::Diamond, Suit::Value::Club, Suit::Value::Pick}) {}
-			
-			~SuitTest() override = default;
-			
-			void SetUp() override {
-			
-			}
-			
-			void TearDown() override {
-			
-			}
-		
-		protected:
-			std::unique_ptr<Suit> suit;
-			std::array<Suit::Value, Suit::VALUE_RANGE> TEST_ENUM_VALUES;
+	protected:
+		SuitTest() : suit(nullptr), TEST_ENUM_VALUES({Suit::Value::Heart, Suit::Value::Diamond, Suit::Value::Club, Suit::Value::Pick}) {}
+
+		~SuitTest() override = default;
+
+		void SetUp() override {
+
+		}
+
+		void TearDown() override {
+
+		}
+
+	protected:
+		std::unique_ptr<Suit> suit;
+		std::array<Suit::Value, Suit::VALUE_RANGE> TEST_ENUM_VALUES;
 	};
 	
 	TEST_F(SuitTest, StaticAtributesTest) {
@@ -174,4 +174,4 @@ namespace poker {
 
 	}
 	
-}	//	namespace poker
+}	//	namespace poker::model
