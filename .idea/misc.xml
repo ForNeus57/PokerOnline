@@ -3,19 +3,19 @@
   <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$" />
   <component name="CidrRootsConfiguration">
     <sourceRoots>
-      <file path="$PROJECT_DIR$/Client/lib/internal" />
-      <file path="$PROJECT_DIR$/Common/lib/internal" />
-      <file path="$PROJECT_DIR$/Model/lib/internal" />
-      <file path="$PROJECT_DIR$/Server/lib/internal" />
+      <file path="$PROJECT_DIR$/client/lib/internal" />
+      <file path="$PROJECT_DIR$/common/lib/internal" />
+      <file path="$PROJECT_DIR$/model/lib/internal" />
+      <file path="$PROJECT_DIR$/server/lib/internal" />
     </sourceRoots>
     <libraryRoots>
-      <file path="$PROJECT_DIR$/Client/lib" />
-      <file path="$PROJECT_DIR$/Common/lib" />
-      <file path="$PROJECT_DIR$/Model/lib" />
-      <file path="$PROJECT_DIR$/Server/lib" />
+      <file path="$PROJECT_DIR$/client/lib" />
+      <file path="$PROJECT_DIR$/common/lib" />
+      <file path="$PROJECT_DIR$/model/lib" />
+      <file path="$PROJECT_DIR$/server/lib" />
     </libraryRoots>
     <excludeRoots>
-      <file path="$PROJECT_DIR$/Server/docs/DatabaseDumps" />
+      <file path="$PROJECT_DIR$/server/docs/database_dumps" />
     </excludeRoots>
   </component>
 </project>

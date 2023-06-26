@@ -1,7 +1,0 @@
-{
-  "server"    : "/* Your database server ip or domain */",
-  "port"      : "/* Your database server port */",
-  "username"  : "/* Your username to db */",
-  "password"  : "/* Your password to a given username */",
-  "databases" : "/* Your schema_name */"
-}

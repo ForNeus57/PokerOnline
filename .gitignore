@@ -30,8 +30,10 @@
 *.exe
 *.out
 *.app
-/Build/
 
-/Server/docs/DatabaseDumps/
-/Server/conf/DBConnectionDetails.json
-/Server/conf/CreateDatabaseDumps.ps1
+./.idea/dataSources/
+
+./build/
+
+./server/docs/database_dumps/
+./server/conf/connection_details.db.json

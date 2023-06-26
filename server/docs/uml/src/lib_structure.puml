@@ -1,0 +1,53 @@
+@startuml
+skinparam backgroundColor LightGray
+skinparam componentStyle uml2
+skinparam linetype ortho
+skinparam packageFontColor Black
+skinparam packageBorderColor RoyalBlue
+skinparam componentFontColor LightGray
+skinparam componentBorderColor RoyalBlue
+skinparam databaseFontColor LightGray
+
+package "Common" <<Module>> {
+  [Common_lib] <<Library>> #Navy
+  [Testing_lib] <<Library>> #Navy
+  [googletest] <<Library>> #Navy
+  [boost] <<Library>> #Navy
+}
+
+package "Model" <<Module>> {
+	[Model_lib] <<Library>> #Navy
+}
+
+package "Server" <<Module>> {
+	[Server_lib] <<Library>> #Navy
+	[mysqlcppconn] <<Library>> #Navy
+}
+
+package "Client" <<Module>> {
+	[Client_lib] <<Library>> #Navy
+}
+
+package "MySQL" <<Server>> {
+	database "dev" <<Database>> #Navy
+    database "prod" <<Database>> #Navy
+}
+
+boost --> Common_lib
+googletest --> Testing_lib
+
+Common_lib --> Testing_lib
+Common_lib --> Model_lib
+Model_lib --> Server_lib
+
+mysqlcppconn --> Server_lib
+
+interface IMySQLConnector <<Interface>> #Navy
+Server_lib --> IMySQLConnector
+IMySQLConnector --> "MySQL" <<Server>>
+
+interface IPokerProtocol <<Interface>> #Navy
+Server_lib --> IPokerProtocol
+IPokerProtocol --> Client
+
+@enduml
