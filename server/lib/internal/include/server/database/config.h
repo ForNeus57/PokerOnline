@@ -5,10 +5,10 @@
 #ifndef POKER_ONLINE_SERVER_SERVER_DATABASE_CONFIG_H
 #define POKER_ONLINE_SERVER_SERVER_DATABASE_CONFIG_H
 
+
 #include <memory>
 #include <vector>
 #include <filesystem>
-
 
 namespace poker::server::database {
 

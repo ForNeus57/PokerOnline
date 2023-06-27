@@ -6,6 +6,10 @@
 #define POKER_ONLINE_SERVER_SERVER_DATABASE_CONTROLLER_H
 
 
+#include <vector>
+#include <any>
+#include <tuple>
+
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
 #include <cppconn/prepared_statement.h>
@@ -23,9 +27,15 @@ namespace poker::server::database {
 
 	public:
 		Controller();
+		~Controller();
 
 	public:
+		void createUser(std::vector<std::any> data);
 
+	private:
+		void connect();
+		void disconnect();
+		std::tuple<std::string, std::string> createUserPrepareData(std::vector<std::any> data);
 
 	};
 

@@ -11,6 +11,7 @@
 
 namespace poker::common {
 
+
 	class PokerException: public std::exception {
 	private:
 		std::string message;

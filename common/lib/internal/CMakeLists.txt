@@ -27,7 +27,7 @@ find_package(Boost 1.74.0 COMPONENTS system filesystem REQUIRED)
 
 if(Boost_FOUND)
 	target_include_directories(${LIBRARY_NAME} SYSTEM PUBLIC ${Boost_INCLUDE_DIRS})
-	target_link_libraries(${LIBRARY_NAME} PUBLIC ${Boost_LIBRARIES} ws2_32)
+	target_link_libraries(${LIBRARY_NAME} PUBLIC ${Boost_LIBRARIES} bcrypt ws2_32)
 endif()
 
 find_package(OpenSSL)

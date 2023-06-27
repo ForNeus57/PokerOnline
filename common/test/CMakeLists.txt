@@ -4,7 +4,9 @@ set(TEST_MAIN
 
 set(TEST_SOURCE
 		src/automata_test.cpp
-		src/file_generator_test.cpp)
+		src/file_generator_test.cpp
+		src/thread_test.cpp
+		)
 
 set(TEST_EXECUTABLE_RUN_NAME
 		${MODULE_NAME}_run_tests

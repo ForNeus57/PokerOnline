@@ -8,12 +8,14 @@ set(SOURCE_DIR
 
 set(LIBRARY_SOURCE
 		${SOURCE_DIR}/config.cpp
-		${SOURCE_DIR}/config_parser.cpp
-		${SOURCE_DIR}/controller.cpp
-		${SOURCE_DIR}/request.cpp
+		${SOURCE_DIR}/program_arguments_parser.cpp
 		${SOURCE_DIR}/server.cpp
-		${SOURCE_DIR}/thread.cpp
-		${SOURCE_DIR}/users.cpp
+		${SOURCE_DIR}/database/config.cpp
+		${SOURCE_DIR}/database/config_parser.cpp
+		${SOURCE_DIR}/database/controller.cpp
+		${SOURCE_DIR}/database/request.cpp
+		${SOURCE_DIR}/database/thread.cpp
+		${SOURCE_DIR}/database/tables/users.cpp
 		)
 
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${LIBRARY_SOURCE})

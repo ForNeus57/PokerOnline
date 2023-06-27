@@ -9,22 +9,28 @@
 #include <boost/lockfree/queue.hpp>
 
 #include <common/thread.h>
+#include <server/database/controller.h>
+#include <server/database/request.h>
 
 namespace poker::server::database {
 
 	/**
-	 * @brief
+	 * @brief   Thread that manages work given to a database
 	 */
-	class Thread: public poker::common::Thread {
-	public:
-		//	boost::lockfree::queue<>
+	class Thread final: public poker::common::Thread {
+	private:
+		Controller database;
+		boost::lockfree::queue<Request> workload();
 
 	public:
-		Thread();
+		Thread(std::shared_ptr<bool>);
+
+	public:
+		void operator() ();
 
 	};
 
 }	//	namespace poker::server::database
 
 
-#endif //POKER_ONLINE_SERVER_SERVER_DATABASE_THREAD_H_D
+#endif	//	POKER_ONLINE_SERVER_SERVER_DATABASE_THREAD_H

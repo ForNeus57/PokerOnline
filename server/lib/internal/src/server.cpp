@@ -8,4 +8,4 @@ namespace poker::server {
 
 	//	Code
 
-}
+}	//	namespace poker::server

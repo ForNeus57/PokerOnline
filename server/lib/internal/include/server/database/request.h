@@ -21,6 +21,15 @@ namespace poker::server::database {
 		void (Controller::*action)(std::vector<std::any>);
 		std::vector<std::any> data;
 
+	public:
+		Request() = default;
+		~Request() = default;
+		Request(const Request&) = default;
+		Request(Request&&) = default;
+
+	public:
+		Request& operator=(const Request& other) = default;
+		Request& operator=(Request&& other) noexcept = default;
 	};
 
 }
