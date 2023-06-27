@@ -6,10 +6,7 @@
 
 namespace poker::common {
 
-	Thread::Thread(): signature() {
-		boost::uuids::random_generator generator;
-		this->signature = generator();
-	}
+	Thread::Thread(): signature(Thread::GENERATOR()) {}
 
 	boost::uuids::uuid Thread::getUuid() {
 		return this->signature;

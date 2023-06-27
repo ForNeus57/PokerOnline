@@ -30,6 +30,13 @@ if(Boost_FOUND)
 	target_link_libraries(${LIBRARY_NAME} PUBLIC ${Boost_LIBRARIES} ws2_32)
 endif()
 
+find_package(OpenSSL)
+
+if(OPENSSL_FOUND)
+	target_include_directories(${LIBRARY_NAME} SYSTEM PUBLIC ${OPENSSL_INCLUDE_DIR})
+	target_link_libraries(${LIBRARY_NAME} PUBLIC ${OPENSSL_LIBRARIES})
+endif()
+
 target_include_directories(${TEST_LIBRARY_NAME} PUBLIC ${INCLUDE_DIR}/testing)
 target_include_directories(${TEST_LIBRARY_NAME} SYSTEM PUBLIC ${gmock_SOURCE_DIR}/include ${gmock_SOURCE_DIR} ${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 target_link_libraries(${TEST_LIBRARY_NAME} PUBLIC ${LIBRARY_NAME} gmock gmock_main gtest gtest_main)

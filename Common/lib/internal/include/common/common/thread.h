@@ -17,6 +17,9 @@ namespace poker::common {
 		boost::uuids::uuid signature;
 
 	public:
+		static boost::uuids::random_generator GENERATOR;
+
+	public:
 		Thread();
 		virtual ~Thread() = default;
 
